@@ -1,106 +1,24 @@
-import { useRef, useState } from "react";
-import verify from "../../lib/verifymnemonic/verify"
-import { mnemonicToSeed } from "../../lib/mnemonic";
+import { useState } from "react";
+import ImportMnemonic from "./ImportMnemonic"
+import PasswordGen from "./PasswordGen";
+
 function PasswordHome() {
 
-    const word1 = useRef(null)
-    const word2 = useRef(null)
-    const word3 = useRef(null)
-    const word4 = useRef(null)
-    const word5 = useRef(null)
-    const word6 = useRef(null)
-    const word7 = useRef(null)
-    const word8 = useRef(null)
-    const word9 = useRef(null)
-    const word10 = useRef(null)
-    const word11 = useRef(null)
-    const word12 = useRef(null)
+    const [gotPassword,setgotPassword] = useState(false);
+    const [seed,setSeed] = useState(null);
 
-    const [invalid,setInvalid] = useState(false);
-
-
-    async function verifyMnemonics() {
-
-       const mnemonicArray=[];
-       mnemonicArray.push(word1.current.value);
-       mnemonicArray.push(word2.current.value);
-       mnemonicArray.push(word3.current.value);
-       mnemonicArray.push(word4.current.value);
-       mnemonicArray.push(word5.current.value);
-       mnemonicArray.push(word6.current.value);
-       mnemonicArray.push(word7.current.value);
-       mnemonicArray.push(word8.current.value);
-       mnemonicArray.push(word9.current.value);
-       mnemonicArray.push(word10.current.value);
-       mnemonicArray.push(word11.current.value);
-       mnemonicArray.push(word12.current.value);
-
-        const isValid = await verify(mnemonicArray);
-            console.log('Valid',isValid)
-            
-        if(!isValid){
-
-            setInvalid(true)
-
-        }
-        else{
-           const seed = await mnemonicToSeed(mnemonicArray)
-           console.log("Seed",seed)
-            setInvalid(false);
-        
-        }
-
+    function gotPass(seed){
+        console.log("Hi")
+        setgotPassword(true)
+        setSeed(seed);
 
     }
 
-
     return (
         <div>
-
-
-            <div>
-                <h1>Enter your 12 words seed phrase</h1>
-            </div>
-
-            <div>
-
-                <table>
-
-                    <tr>
-                        <td><span>1</span> <input ref={word1} type="text" /></td>
-                        <td><span>2</span> <input ref={word2} type="text" /></td>
-                        <td><span>3</span> <input ref={word3} type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td><span>4</span> <input ref={word4} type="text" /></td>
-                        <td><span>5</span> <input ref={word5} type="text" /></td>
-                        <td><span>6</span> <input ref={word6} type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td><span>7</span> <input ref={word7} type="text" /></td>
-                        <td><span>8</span> <input ref={word8} type="text" /></td>
-                        <td><span>9</span> <input ref={word9} type="text" /></td>
-                    </tr>
-                    <tr>
-                        <td><span>10</span> <input ref={word10} type="text" /></td>
-                        <td><span>11</span> <input ref={word11} type="text" /></td>
-                        <td><span>12</span> <input ref={word12} type="text" /></td>
-                    </tr>
-
-
-                </table>
-
-                <div>
-                    <button onClick={verifyMnemonics}>Submit</button>
-                </div>
-
-            </div>
-
-            <div>
-                {invalid?<div> Invalid Seed</div>:""}
+          {!gotPassword && <ImportMnemonic gotPass={gotPass}/>}
+          {gotPassword && <PasswordGen seed={seed}/>}
         
-            </div>
-
         </div>
     )
 

@@ -1,11 +1,11 @@
-import entropyGen from "./entropy";
-import mnemonic from "./mnemonic"
+import entropyGenerator from "./entropy";
+import {getMnemonic} from "./mnemonic"
 import checksum from "./checksum";
 
 async function wordsGen() {
 
     //Random generated Bit
-    const randomBit = entropyGen();
+    const randomBit = entropyGenerator();
   
     //Checksum of the Hash
     const checksumBit = await checksum(randomBit)
@@ -14,7 +14,7 @@ async function wordsGen() {
     const randomEntropy = randomBit + checksumBit;
   
     //Mnemonic words
-    const mnemonics = mnemonic.getMnemonic(randomEntropy);
+    const mnemonics = getMnemonic(randomEntropy);
   
     return mnemonics;
 

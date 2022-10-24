@@ -1,0 +1,31 @@
+.mnemonic_import > div{
+
+    margin:30px
+}
+
+
+table {
+    border-collapse: separate;
+    border-spacing: 1em 2em;
+}
+
+td > span{
+    margin-right:10px;
+}
+tr input{
+    width: 170px;
+    height: 40px;
+    border-radius: 1%;
+}
+
+.mnemonic_submit{
+
+    background-color: blue;
+    color:white;
+    border-radius: 35px;
+    border:none;
+    width: 220px;
+    height: 50px;
+    font-size: 15px;
+
+}

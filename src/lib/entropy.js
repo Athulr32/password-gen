@@ -1,4 +1,4 @@
-const {decToBin} = require("./conversion")
+import {decToBin} from "./conversion"
 
 function entropyGenerator() {
 
@@ -19,4 +19,4 @@ function entropyGenerator() {
   
   }
 
-module.exports = entropyGenerator;
+export default entropyGenerator

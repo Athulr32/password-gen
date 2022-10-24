@@ -1,19 +1,19 @@
-const conversion = require("./conversion")
+import {bin2hex,sha256,hex2bin} from "../lib/conversion"
 
 async function checksum(randomBit) {
 
     //Convert Binary to Hex
     
-    const hexOfRandomBit = conversion.bin2hex(randomBit)
+    const hexOfRandomBit = bin2hex(randomBit)
   
   
     //Get the sha256 hash of the randomEntropy
-    const hashOfHex = await conversion.sha256(hexOfRandomBit);
+    const hashOfHex = await sha256(hexOfRandomBit);
     console.log("HexOF random",hexOfRandomBit)
-    const checksumBit = conversion.hex2bin(hashOfHex).slice(0, 4);
+    const checksumBit = hex2bin(hashOfHex).slice(0, 4);
   
     return checksumBit;
   
   }
   
-  module.exports = checksum
+export default checksum

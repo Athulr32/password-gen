@@ -344,4 +344,4 @@ const words = [
     'zone', 'zoo'
   ]
   
-module.exports = words
+export default words;

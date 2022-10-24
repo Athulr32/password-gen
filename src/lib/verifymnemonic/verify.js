@@ -1,7 +1,7 @@
 
-const words = require("../words")
-const conversion = require("../conversion")
-const checksum = require("../checksum");
+import words from "../words";
+import { decToBin } from "../conversion";
+import checksum from "../checksum"
 
 async function verify(mnemonic){
 
@@ -17,7 +17,7 @@ async function verify(mnemonic){
     
                 if(word === mnemonic[j]){
     
-                    mnemonicBit[j]=conversion.decToBin(i,11);
+                    mnemonicBit[j]=decToBin(i,11);
                 }
     
     

@@ -1,5 +1,5 @@
-const conversion = require("./conversion")
-const words = require("./words")
+import { decToBin,bin2hex } from "./conversion"
+import words from "./words"
 const pbkdf2 = require('pbkdf2')
 
 function getMnemonic(entropy) {
@@ -21,7 +21,7 @@ function getMnemonic(entropy) {
   
     for (let i = 0; i < words.length; i++) {
   
-      const bin = conversion.decToBin(i, 11);
+      const bin = decToBin(i, 11);
   
   
       for (let j = 0; j < wordBit.length; j++) {
@@ -44,19 +44,18 @@ function getMnemonic(entropy) {
   }
 
 
-  async function mnemonicToSeed(mnemonic) {
+  async function mnemonicToSeed(mnemonic,pass="") {
 
     const mnemonicString = mnemonic.join(' ');
-    const data = pbkdf2.pbkdf2Sync(mnemonicString, "mnemonic", 2048, 64, 'sha512')
+    console.log(mnemonicString)
+    const data = pbkdf2.pbkdf2Sync(mnemonicString, "mnemonic"+pass, 2048, 64, 'sha512')
     console.log(data)
     return data.toString('hex');
   
   
   }
   
-  module.exports={
-    mnemonicToSeed,
-    getMnemonic
-  };
+export default mnemonicToSeed
+export {getMnemonic}
 
  

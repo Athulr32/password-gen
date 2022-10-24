@@ -1,0 +1,28 @@
+.mnemonic_gen > div{
+
+    margin:30px;
+
+}
+
+button{
+    border:none;
+}
+
+
+.generate_button{
+
+    padding:20px;
+    background-color: blue;
+    color:white;
+    border-radius: 20px;
+    width: 150px;
+    font-size: 15px;
+
+
+}
+
+.generate_password{
+
+     padding:20px;
+     border-radius: 7%;
+}

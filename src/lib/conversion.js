@@ -90,8 +90,13 @@ async function sha256(hexstr) {
 }
 
 
-exports.decToBin = decToBin;
-exports.bin2hex = bin2hex;
-exports.hex2bin = hex2bin;
-exports.byteToBit = byteToBit
-exports.sha256 = sha256
+const _decToBin = decToBin;
+export { _decToBin as decToBin };
+const _bin2hex = bin2hex;
+export { _bin2hex as bin2hex };
+const _hex2bin = hex2bin;
+export { _hex2bin as hex2bin };
+const _byteToBit = byteToBit;
+export { _byteToBit as byteToBit };
+const _sha256 = sha256;
+export { _sha256 as sha256 };

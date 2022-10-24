@@ -14,9 +14,9 @@ function Home() {
                 flexDirection: 'column'
             }}>
                 <div style={{
-                    marginTop: "330px",
+                    marginTop: "15%",
                     textAlign: "center",
-                    widows: "75%"
+                    width: "75%"
                 }}>
                     <h1>Generate your cryptographically Secured password for All Sites from 12 words without saving it anywhere </h1>
                 </div>
