@@ -28,9 +28,25 @@ function PasswordGen({ seed }) {
         const binOfSite = binaryOfSite.join("");
         const total = bin2hex(binOfSeed + binOfSite);
 
-        const hash = await sha256(total);
-        console.log(hash.length)
-        setPass(hash.slice(0,20));
+        const hash = await (await sha256(total)).slice(0,20);
+     
+        const hashArray = hash.split("");
+        for(let i=2;i<hashArray.length;i=i+3){
+
+            if(isNaN(hashArray[i])){
+
+                hashArray[i]=hashArray[i].toLocaleUpperCase();
+
+            }
+
+        }
+        hashArray.splice(4,0,"-");
+        hashArray.splice(9,0,"-");
+        hashArray.splice(14,0,"-");
+        hashArray.splice(19,0,"-");
+        console.log(typeof hashArray[2]);
+        console.log(hashArray)
+        setPass(hashArray);
 
     }
 

@@ -24,7 +24,7 @@ function Mnemonic() {
         }}>
 
             <div>
-                <h1>Use this Words to recover your password</h1>
+                <h1>Use this Words to Set/recover your password</h1>
                 <div>If you loss These words you can't recover it!!!</div>
             </div>
 
